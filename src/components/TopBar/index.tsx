@@ -32,6 +32,7 @@ export const TopBar: React.FC = () => {
             mr: 2,
             ".MuiOutlinedInput-notchedOutline": { border: 0 },
           }}
+          aria-placeholder="Ročník"
         >
           <MenuItem value="2024">2024</MenuItem>
           <MenuItem value="2025">2025</MenuItem>
