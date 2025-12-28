@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Box, Typography, Grid, Button, Paper } from "@mui/material";
+import { Box, Typography, Grid, Button, Paper, alpha } from "@mui/material";
 import { useTeams, usePage } from "context";
 import { Answer } from "data";
 import { TeamSelectMenu } from "components";
-import { wrapperStyles } from "styles";
+import { wrapperStyles, questionStyles } from "styles";
 
 export const QuestionPage: React.FC = () => {
   const { teams, assignedAnswers } = useTeams();
@@ -32,11 +32,11 @@ export const QuestionPage: React.FC = () => {
   }
 
   return (
-    <Paper elevation={3} sx={wrapperStyles.questionWrapper}>
+    <Box sx={wrapperStyles.questionWrapper}>
       <Typography variant="h4" gutterBottom textAlign="center" mb={6}>
         {page.question?.question}
       </Typography>
-      <Grid container spacing={2} alignContent={"center"} width={"100%"}>
+      <Grid container spacing={4} alignContent={"center"} width={"100%"}>
         {page.question?.answers.map((answer) => {
           const answerKey = `${datasetId}-${page.round.id}-${page.question?.id}-${answer.id}`;
           const assignedTeamId = assignedAnswers[answerKey];
@@ -47,28 +47,41 @@ export const QuestionPage: React.FC = () => {
                 fullWidth
                 variant={assignedTeam ? "contained" : "outlined"}
                 onClick={(e) => handleAnswerClick(e, answer)}
-                sx={{
-                  justifyContent: "space-between",
-                  py: 2,
-                  fontSize: "1.2rem",
-                  bgcolor: assignedTeam ? assignedTeam.color : "transparent",
-                  color: assignedTeam ? "white" : "primary.main",
-                  borderColor: assignedTeam ? "transparent" : "primary.main",
-                  textShadow: assignedTeam
-                    ? "1px 1px 2px rgba(0,0,0,0.5)"
-                    : "none",
-                  "&:hover": {
-                    bgcolor: assignedTeam
-                      ? assignedTeam.color
-                      : "rgba(52, 72, 96, 0.08)",
-                    opacity: assignedTeam ? 0.9 : 1,
-                  },
-                }}
+                sx={[questionStyles.answer]}
               >
-                <span>{answer.text}</span>
-                <span>
-                  {answer.score} pts {assignedTeam && `(${assignedTeam.name})`}
-                </span>
+                <Box
+                  sx={{
+                    color: "text.primary",
+                    visibility: assignedTeam ? "visible" : "hidden",
+                  }}
+                >
+                  {answer.text}
+                </Box>
+                <Box
+                  sx={[
+                    questionStyles.points,
+                    {
+                      bgcolor: assignedTeam
+                        ? alpha(assignedTeam.color, 0.5)
+                        : "transparent",
+                    },
+                  ]}
+                >
+                  {answer.points}
+                </Box>
+                <Box
+                  sx={[
+                    questionStyles.points,
+                    questionStyles.score,
+                    {
+                      bgcolor: assignedTeam
+                        ? alpha(assignedTeam.color, 0.5)
+                        : "transparent",
+                    },
+                  ]}
+                >
+                  {answer.score} bodů
+                </Box>
               </Button>
             </Grid>
           );
@@ -80,6 +93,6 @@ export const QuestionPage: React.FC = () => {
         activeAnswer={activeAnswer}
         setActiveAnswer={setActiveAnswer}
       />
-    </Paper>
+    </Box>
   );
 };

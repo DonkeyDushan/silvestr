@@ -1,4 +1,4 @@
-import { Container, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { TeamScores, TopBar, QuestionPage, PageChevrons } from "components";
 import { TeamProvider, PageProvider } from "context";

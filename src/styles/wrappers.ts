@@ -9,15 +9,16 @@ export const wrapperStyles = {
   contentWrapper: {
     display: "grid",
     gridTemplateRows: "1fr auto",
-    pb: 4,
+    pt: 12,
+    pb: 6,
     width: "80vw",
+    height: "100%",
     justifySelf: "center",
   },
   questionWrapper: {
-    p: 8,
-    pt: 12,
     minHeight: "400px",
     display: "grid",
     gridTemplateRows: "auto 1fr",
+    backgroundColor: "transparent",
   },
 };

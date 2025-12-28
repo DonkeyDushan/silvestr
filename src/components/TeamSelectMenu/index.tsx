@@ -34,6 +34,8 @@ export const TeamSelectMenu: React.FC<{
       anchorEl={anchorEl}
       open={Boolean(anchorEl)}
       onClose={() => handleAssignScore(null)}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
     >
       <MenuItem onClick={() => handleAssignScore(null)}>
         <em>Nikdo</em>

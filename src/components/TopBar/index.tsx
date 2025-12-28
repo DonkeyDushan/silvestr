@@ -8,11 +8,13 @@ import {
   Tab,
   MenuItem,
   Select,
+  alpha,
 } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { TeamManager } from "components";
 import { usePage } from "context";
+import { theme } from "styles/theme";
 
 export const TopBar: React.FC = () => {
   const navigate = useNavigate();
@@ -47,13 +49,27 @@ export const TopBar: React.FC = () => {
         onChange={(_, newValue) => handlePageChange(newValue)}
         variant="scrollable"
         scrollButtons="auto"
-        sx={{ bgcolor: "primary.dark" }}
+        sx={{
+          bgcolor: "primary.dark",
+          p: 0,
+          ".MuiTabs-indicator": { display: "none" },
+        }}
       >
         {pages.map((p, i) => (
           <Tab
             key={i}
             label={p.type === "intro" ? `R${p.round.id}` : `Q${p.question?.id}`}
-            sx={{ color: "white" }}
+            sx={{
+              color: "text.primary",
+              backgroundColor:
+                p.type === "intro"
+                  ? alpha(theme.palette.background.default, 0.5)
+                  : "transparent",
+              "&.Mui-selected": {
+                backgroundColor: "background.default",
+                color: "text.primary",
+              },
+            }}
           />
         ))}
       </Tabs>

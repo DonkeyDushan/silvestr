@@ -1,0 +1,30 @@
+export const questionStyles = {
+  points: {
+    color: "text.primary",
+    px: 3,
+    height: "100%",
+    alignContent: "center",
+    borderLeft: "2px solid",
+    borderColor: "text.primary",
+    fontWeight: "bold",
+  },
+  score: {
+    borderRadius: "0 2 2 0",
+  },
+  answer: {
+    fontSize: "1.2rem",
+    display: "grid",
+    gridTemplateColumns: "1fr auto auto",
+    alignContent: "center",
+    justifyItems: "start",
+    gridTemplateRows: "1fr",
+    p: 0,
+    paddingLeft: 3,
+    minHeight: "5rem",
+    borderRadius: 4,
+    overflow: "hidden",
+    border: "2px solid",
+    borderColor: "text.primary",
+    backgroundColor: "background.paper",
+  },
+};
