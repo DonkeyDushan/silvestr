@@ -1,26 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   AppBar,
   Toolbar,
   Typography,
-  IconButton,
   Tabs,
   Tab,
   MenuItem,
   Select,
   alpha,
 } from "@mui/material";
-import { Settings as SettingsIcon } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { TeamManager } from "components";
+import { Settings, TeamManager } from "components";
 import { usePage } from "context";
 import { theme } from "styles/theme";
 
 export const TopBar: React.FC = () => {
   const navigate = useNavigate();
   const { datasetId, pageIndex, pages, handlePageChange } = usePage();
-
-  const [isTeamDialogOpen, setIsTeamDialogOpen] = useState(false);
 
   return (
     <AppBar position="static">
@@ -40,9 +36,8 @@ export const TopBar: React.FC = () => {
           <MenuItem value="2024">2024</MenuItem>
           <MenuItem value="2025">2025</MenuItem>
         </Select>
-        <IconButton color="inherit" onClick={() => setIsTeamDialogOpen(true)}>
-          <SettingsIcon />
-        </IconButton>
+        <TeamManager />
+        <Settings />
       </Toolbar>
       <Tabs
         value={pageIndex < pages.length ? pageIndex : 0}
@@ -73,10 +68,6 @@ export const TopBar: React.FC = () => {
           />
         ))}
       </Tabs>
-      <TeamManager
-        open={isTeamDialogOpen}
-        onClose={() => setIsTeamDialogOpen(false)}
-      />
     </AppBar>
   );
 };

@@ -4,3 +4,4 @@ export * from "./TeamSelectMenu";
 export * from "./TeamManager";
 export * from "./QuestionPage";
 export * from "./PageChevrons";
+export * from "./Settings";
