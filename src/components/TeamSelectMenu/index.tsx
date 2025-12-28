@@ -10,7 +10,7 @@ export const TeamSelectMenu: React.FC<{
 }> = ({ anchorEl, setAnchorEl, activeAnswer, setActiveAnswer }) => {
   const { teams, assignScore } = useTeams();
   const { datasetId, currentPage } = usePage();
-  const { roundMultipliers } = useSettings();
+  const { roundMultipliers, pointsAsScore } = useSettings();
 
   const multiplier = roundMultipliers[currentPage.round.id] || 1;
 
@@ -26,7 +26,8 @@ export const TeamSelectMenu: React.FC<{
         currentPage.question.id,
         activeAnswer,
         teamId,
-        multiplier
+        multiplier,
+        pointsAsScore
       );
     }
     setAnchorEl(null);

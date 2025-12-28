@@ -8,7 +8,7 @@ import { wrapperStyles, questionStyles } from "styles";
 export const QuestionPage: React.FC = () => {
   const { teams, assignedAnswers } = useTeams();
   const { currentPage: page, datasetId } = usePage();
-  const { showAllAnswers, roundMultipliers } = useSettings();
+  const { showAllAnswers, roundMultipliers, pointsAsScore } = useSettings();
 
   const [activeAnswer, setActiveAnswer] = useState<Answer | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -69,21 +69,24 @@ export const QuestionPage: React.FC = () => {
                       : {},
                   ]}
                 >
-                  {answer.points}
+                  {answer.points *
+                    (pointsAsScore ? roundMultipliers[page.round.id] || 1 : 1)}
                 </Box>
-                <Box
-                  sx={[
-                    questionStyles.points,
-                    questionStyles.score,
-                    assignedTeam
-                      ? {
-                          bgcolor: alpha(assignedTeam.color, 0.5),
-                        }
-                      : {},
-                  ]}
-                >
-                  {answer.score * (roundMultipliers[page.round.id] || 1)} bodů
-                </Box>
+                {!pointsAsScore && (
+                  <Box
+                    sx={[
+                      questionStyles.points,
+                      questionStyles.score,
+                      assignedTeam
+                        ? {
+                            bgcolor: alpha(assignedTeam.color, 0.5),
+                          }
+                        : {},
+                    ]}
+                  >
+                    {answer.score * (roundMultipliers[page.round.id] || 1)} bodů
+                  </Box>
+                )}
               </Button>
             </Grid>
           );

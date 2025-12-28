@@ -24,6 +24,8 @@ export const Settings = () => {
     setShowAllAnswers,
     roundMultipliers,
     setRoundMultiplier,
+    pointsAsScore,
+    setPointsAsScore,
   } = useSettings();
   const { resetScores } = useTeams();
   const { dataset } = usePage();
@@ -61,6 +63,15 @@ export const Settings = () => {
                 }
                 label="Zviditelnit všechny odpovědi"
               />
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={pointsAsScore}
+                    onChange={(e) => setPointsAsScore(e.target.checked)}
+                  />
+                }
+                label="Použít počet odpovědí jako skóre"
+              />
             </Box>
 
             <Divider />
@@ -75,8 +86,6 @@ export const Settings = () => {
             </Box>
 
             <Divider />
-
-            <Box>{JSON.stringify(roundMultipliers)}</Box>
 
             <Box>
               <Typography variant="h6" gutterBottom>

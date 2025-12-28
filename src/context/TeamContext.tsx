@@ -14,7 +14,8 @@ interface TeamContextType {
     questionId: number,
     answer: Answer,
     teamId: string | null,
-    multiplier?: number
+    multiplier?: number,
+    pointsAsScore?: boolean
   ) => void;
   resetScores: () => void;
 }
@@ -70,7 +71,8 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({
     questionId: number,
     answer: Answer,
     teamId: string | null,
-    multiplier: number = 1
+    multiplier: number = 1,
+    pointsAsScore: boolean = false
   ) => {
     const answerKey = `${datasetId}-${roundId}-${questionId}-${answer.id}`;
     const previousTeamId = assignedAnswers[answerKey];
@@ -79,10 +81,17 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({
     const newScores = { ...scores };
     if (previousTeamId) {
       newScores[previousTeamId] =
-        (newScores[previousTeamId] || 0) - answer.score * multiplier;
+        (newScores[previousTeamId] || 0) -
+        (pointsAsScore
+          ? answer.points * multiplier
+          : answer.score * multiplier);
     }
     if (teamId) {
-      newScores[teamId] = (newScores[teamId] || 0) + answer.score * multiplier;
+      newScores[teamId] =
+        (newScores[teamId] || 0) +
+        (pointsAsScore
+          ? answer.points * multiplier
+          : answer.score * multiplier);
     }
 
     // Update assignments
