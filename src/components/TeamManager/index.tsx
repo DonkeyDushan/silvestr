@@ -1,0 +1,79 @@
+import React from "react";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Box,
+  TextField,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  IconButton,
+} from "@mui/material";
+import { Add as AddIcon, Delete as DeleteIcon } from "@mui/icons-material";
+import { Team } from "../../types";
+
+interface TeamDialogProps {
+  open: boolean;
+  onClose: () => void;
+  teams: Team[];
+  onAddTeam: (name: string) => void;
+  onDeleteTeam: (id: string) => void;
+}
+
+export const TeamManager: React.FC<TeamDialogProps> = ({
+  open,
+  onClose,
+  teams,
+  onAddTeam,
+  onDeleteTeam,
+}) => {
+  const [newTeamName, setNewTeamName] = React.useState("");
+
+  const handleAdd = () => {
+    if (newTeamName.trim()) {
+      onAddTeam(newTeamName.trim());
+      setNewTeamName("");
+    }
+  };
+
+  return (
+    <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
+      <DialogTitle>Správa týmů</DialogTitle>
+      <DialogContent>
+        <Box sx={{ display: "flex", gap: 1, mb: 2, mt: 1 }}>
+          <TextField
+            fullWidth
+            label="Název týmu"
+            value={newTeamName}
+            onChange={(e) => setNewTeamName(e.target.value)}
+            onKeyPress={(e) => e.key === "Enter" && handleAdd()}
+          />
+          <Button
+            variant="contained"
+            onClick={handleAdd}
+            startIcon={<AddIcon />}
+          >
+            Přidat
+          </Button>
+        </Box>
+        <List>
+          {teams.map((team) => (
+            <ListItem key={team.id}>
+              <ListItemText primary={team.name} />
+
+              <IconButton edge="end" onClick={() => onDeleteTeam(team.id)}>
+                <DeleteIcon />
+              </IconButton>
+            </ListItem>
+          ))}
+        </List>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Zavřít</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};

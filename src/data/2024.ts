@@ -1,4 +1,4 @@
-import { Dataset } from "./type";
+import { Dataset } from "../types";
 
 export const dataset2024: Dataset = [
   {
