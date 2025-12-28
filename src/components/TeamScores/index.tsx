@@ -10,7 +10,7 @@ export const TeamScores: React.FC = () => {
       {teams.map((team) => (
         <Box key={team.id} sx={scoreStyles.scoreBox}>
           <Box sx={[scoreStyles.teamName, { backgroundColor: team.color }]}>
-            <Typography variant="h5" color={"primary.contrastText"}>
+            <Typography variant="h4" color={"primary.contrastText"}>
               {team.name}
             </Typography>
           </Box>
