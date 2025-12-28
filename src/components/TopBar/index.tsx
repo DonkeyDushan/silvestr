@@ -54,7 +54,11 @@ export const TopBar: React.FC = () => {
           <Tab
             key={i}
             label={
-              p.type === "intro" ? `R${p?.round?.id}` : `Q${p.question?.id}`
+              p.type === "intro"
+                ? `${p?.round?.id}. KOLO`
+                : i === pages.length - 1
+                ? "VÝSLEDKY"
+                : `${p.question?.id}`
             }
             sx={{
               color: "text.primary",

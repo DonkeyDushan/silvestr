@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Box } from "@mui/material";
 import { useTeams } from "context";
 import { scoreStyles } from "styles/scores";
 
 export const FinalPage: React.FC = () => {
   const { teams, scores } = useTeams();
+
+  useEffect(() => {
+    const audio = new Audio(`${process.env.PUBLIC_URL}/audio/victory-chime.mp3`);
+    audio.play().catch((e) => console.error("Error playing audio:", e));
+  }, []);
 
   const sortedTeams = [...teams].sort((a, b) => {
     const scoreA = scores[a.id] || 0;
