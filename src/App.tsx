@@ -2,16 +2,17 @@ import { Container, Box } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { TeamScores, TopBar, QuestionPage, PageChevrons } from "components";
 import { TeamProvider, PageProvider } from "context";
+import { wrapperStyles } from "./styles";
 
 function MainApp() {
   return (
-    <Box sx={{ flexGrow: 1, minHeight: "100vh", bgcolor: "#f5f5f5" }}>
+    <Box sx={wrapperStyles.appWrapper}>
       <TopBar />
-      <Container sx={{ mt: 4, position: "relative", pb: 10 }}>
+      <Box sx={wrapperStyles.contentWrapper}>
         <PageChevrons />
         <QuestionPage />
         <TeamScores />
-      </Container>
+      </Box>
     </Box>
   );
 }
