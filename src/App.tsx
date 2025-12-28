@@ -4,10 +4,8 @@ import {
   ChevronRight as ChevronRightIcon,
 } from "@mui/icons-material";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { TeamScores } from "./components/TeamScores";
-import { QuestionPage } from "./components/QuestionPage";
-import { TopBar } from "./components/TopBar";
-import { TeamProvider, PageProvider, usePage } from "./context";
+import { TeamScores, TopBar, QuestionPage } from "components";
+import { TeamProvider, PageProvider, usePage } from "context";
 
 function MainApp() {
   const { pageIndex, pages, handlePageChange } = usePage();

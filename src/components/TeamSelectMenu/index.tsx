@@ -1,5 +1,5 @@
-import { usePage, useTeams } from "@/context";
-import { Answer } from "@/data";
+import { usePage, useTeams } from "context";
+import { Answer } from "data";
 import { Divider, Menu, MenuItem } from "@mui/material";
 
 export const TeamSelectMenu: React.FC<{

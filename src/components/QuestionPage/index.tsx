@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Box, Typography, Grid, Button, Paper } from "@mui/material";
-import { useTeams, usePage } from "@/context";
-import { Answer } from "@/data";
-import { TeamSelectMenu } from "../TeamSelectMenu";
+import { useTeams, usePage } from "context";
+import { Answer } from "data";
+import { TeamSelectMenu } from "components";
 
 export const QuestionPage: React.FC = () => {
   const { teams, assignedAnswers } = useTeams();

@@ -7,8 +7,8 @@ import React, {
   ReactNode,
 } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { dataset2024, dataset2025 } from "../data";
-import { generatePages, PageType } from "../utils/pageUtils";
+import { dataset2024, dataset2025 } from "data";
+import { generatePages, PageType } from "utils";
 
 const DATASETS: Record<string, any> = {
   "2024": dataset2024,

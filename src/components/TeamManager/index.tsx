@@ -13,7 +13,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { Add as AddIcon, Delete as DeleteIcon } from "@mui/icons-material";
-import { useTeams } from "../../context/TeamContext";
+import { useTeams } from "context";
 
 interface TeamDialogProps {
   open: boolean;

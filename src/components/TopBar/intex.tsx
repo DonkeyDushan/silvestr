@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { TeamManager } from "../TeamManager";
+import { TeamManager } from "components";
 
 export const TopBar: React.FC<{
   datasetId: string;

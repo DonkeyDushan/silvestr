@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Grid, Paper } from "@mui/material";
-import { useTeams } from "../../context/TeamContext";
+import { useTeams } from "context";
 
 export const TeamScores: React.FC = () => {
   const { teams, scores } = useTeams();

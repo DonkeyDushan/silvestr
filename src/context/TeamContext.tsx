@@ -1,6 +1,5 @@
-import React, { createContext, useContext, ReactNode } from 'react';
-import { Team, Answer } from '../utils/types';
-import { useLocalStorage } from '../utils/useLocalStorage';
+import React, { createContext, useContext, ReactNode } from "react";
+import { Team, Answer, useLocalStorage } from "utils";
 
 interface TeamContextType {
   teams: Team[];
@@ -8,15 +7,28 @@ interface TeamContextType {
   assignedAnswers: Record<string, string>;
   addTeam: (name: string) => void;
   deleteTeam: (id: string) => void;
-  assignScore: (datasetId: string, roundId: number, questionId: number, answer: Answer, teamId: string | null) => void;
+  assignScore: (
+    datasetId: string,
+    roundId: number,
+    questionId: number,
+    answer: Answer,
+    teamId: string | null
+  ) => void;
 }
 
 const TeamContext = createContext<TeamContextType | undefined>(undefined);
 
-export const TeamProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [teams, setTeams] = useLocalStorage<Team[]>('teams', []);
-  const [scores, setScores] = useLocalStorage<Record<string, number>>('scores', {});
-  const [assignedAnswers, setAssignedAnswers] = useLocalStorage<Record<string, string>>('assignedAnswers', {});
+export const TeamProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [teams, setTeams] = useLocalStorage<Team[]>("teams", []);
+  const [scores, setScores] = useLocalStorage<Record<string, number>>(
+    "scores",
+    {}
+  );
+  const [assignedAnswers, setAssignedAnswers] = useLocalStorage<
+    Record<string, string>
+  >("assignedAnswers", {});
 
   const addTeam = (name: string) => {
     const newTeam: Team = {
@@ -28,13 +40,13 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const deleteTeam = (id: string) => {
     setTeams(teams.filter((t) => t.id !== id));
-    
+
     const newScores = { ...scores };
     delete newScores[id];
     setScores(newScores);
 
     const newAssigned = { ...assignedAnswers };
-    Object.keys(newAssigned).forEach(key => {
+    Object.keys(newAssigned).forEach((key) => {
       if (newAssigned[key] === id) {
         delete newAssigned[key];
       }
@@ -42,14 +54,21 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setAssignedAnswers(newAssigned);
   };
 
-  const assignScore = (datasetId: string, roundId: number, questionId: number, answer: Answer, teamId: string | null) => {
+  const assignScore = (
+    datasetId: string,
+    roundId: number,
+    questionId: number,
+    answer: Answer,
+    teamId: string | null
+  ) => {
     const answerKey = `${datasetId}-${roundId}-${questionId}-${answer.id}`;
     const previousTeamId = assignedAnswers[answerKey];
 
     // Update scores
     const newScores = { ...scores };
     if (previousTeamId) {
-      newScores[previousTeamId] = (newScores[previousTeamId] || 0) - answer.score;
+      newScores[previousTeamId] =
+        (newScores[previousTeamId] || 0) - answer.score;
     }
     if (teamId) {
       newScores[teamId] = (newScores[teamId] || 0) + answer.score;
@@ -68,7 +87,16 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <TeamContext.Provider value={{ teams, scores, assignedAnswers, addTeam, deleteTeam, assignScore }}>
+    <TeamContext.Provider
+      value={{
+        teams,
+        scores,
+        assignedAnswers,
+        addTeam,
+        deleteTeam,
+        assignScore,
+      }}
+    >
       {children}
     </TeamContext.Provider>
   );
@@ -77,7 +105,7 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 export const useTeams = () => {
   const context = useContext(TeamContext);
   if (context === undefined) {
-    throw new Error('useTeams must be used within a TeamProvider');
+    throw new Error("useTeams must be used within a TeamProvider");
   }
   return context;
 };

@@ -11,8 +11,8 @@ import {
 } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { TeamManager } from "../TeamManager";
-import { usePage } from "../../context";
+import { TeamManager } from "components";
+import { usePage } from "context";
 
 export const TopBar: React.FC = () => {
   const navigate = useNavigate();
