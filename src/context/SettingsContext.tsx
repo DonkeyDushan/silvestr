@@ -8,6 +8,8 @@ interface SettingsContextType {
   setRoundMultiplier: (roundId: number, multiplier: number) => void;
   pointsAsScore: boolean;
   setPointsAsScore: (use: boolean) => void;
+  showScore: boolean;
+  setShowScore: (show: boolean) => void;
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(
@@ -28,6 +30,7 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
   const [roundMultipliers, setRoundMultipliers] = useLocalStorage<
     Record<number, number>
   >("roundMultipliers", {});
+  const [showScore, setShowScore] = useLocalStorage<boolean>("showScore", true);
 
   const setRoundMultiplier = (roundId: number, multiplier: number) => {
     setRoundMultipliers((prev: Record<number, number>) => ({
@@ -45,6 +48,8 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
         setRoundMultiplier,
         pointsAsScore,
         setPointsAsScore,
+        showScore,
+        setShowScore,
       }}
     >
       {children}

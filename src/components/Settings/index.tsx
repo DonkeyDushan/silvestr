@@ -26,6 +26,8 @@ export const Settings = () => {
     setRoundMultiplier,
     pointsAsScore,
     setPointsAsScore,
+    showScore,
+    setShowScore,
   } = useSettings();
   const { resetScores } = useTeams();
   const { dataset } = usePage();
@@ -71,6 +73,15 @@ export const Settings = () => {
                   />
                 }
                 label="Použít počet odpovědí jako skóre"
+              />
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={showScore}
+                    onChange={(e) => setShowScore(e.target.checked)}
+                  />
+                }
+                label="Zobrazit skóre u odpovědí"
               />
             </Box>
 

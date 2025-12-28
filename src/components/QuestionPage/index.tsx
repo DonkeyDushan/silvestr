@@ -8,7 +8,8 @@ import { wrapperStyles, questionStyles } from "styles";
 export const QuestionPage: React.FC = () => {
   const { teams, assignedAnswers } = useTeams();
   const { currentPage: page, datasetId } = usePage();
-  const { showAllAnswers, roundMultipliers, pointsAsScore } = useSettings();
+  const { showAllAnswers, roundMultipliers, pointsAsScore, showScore } =
+    useSettings();
 
   const [activeAnswer, setActiveAnswer] = useState<Answer | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -82,6 +83,10 @@ export const QuestionPage: React.FC = () => {
                           bgcolor: alpha(assignedTeam.color, 0.5),
                         }
                       : {},
+                    {
+                      visibility:
+                        assignedTeam || showScore ? "visible" : "hidden",
+                    },
                   ]}
                 >
                   <Typography variant="h6" fontWeight={600} minWidth={"4ch"}>
@@ -101,6 +106,10 @@ export const QuestionPage: React.FC = () => {
                             bgcolor: alpha(assignedTeam.color, 0.5),
                           }
                         : {},
+                      {
+                        visibility:
+                          assignedTeam || showScore ? "visible" : "hidden",
+                      },
                     ]}
                   >
                     <Typography variant="h6" fontWeight={600} minWidth={"8ch"}>
