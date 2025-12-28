@@ -1,4 +1,4 @@
-import { usePage, useSettings, useTeams } from "context";
+import { usePage, useTeams } from "context";
 import { Answer } from "data";
 import { Box, Divider, Menu, MenuItem } from "@mui/material";
 
@@ -10,9 +10,6 @@ export const TeamSelectMenu: React.FC<{
 }> = ({ anchorEl, setAnchorEl, activeAnswer, setActiveAnswer }) => {
   const { teams, assignScore } = useTeams();
   const { datasetId, currentPage } = usePage();
-  const { roundMultipliers, pointsAsScore } = useSettings();
-
-  const multiplier = roundMultipliers[currentPage.round.id] || 1;
 
   const handleAssignScore = (teamId: string | null) => {
     if (
@@ -25,9 +22,7 @@ export const TeamSelectMenu: React.FC<{
         currentPage.round.id,
         currentPage.question.id,
         activeAnswer,
-        teamId,
-        multiplier,
-        pointsAsScore
+        teamId
       );
     }
     setAnchorEl(null);

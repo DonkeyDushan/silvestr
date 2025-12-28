@@ -20,24 +20,24 @@ function MainApp() {
 function App() {
   const savedDataset = localStorage.getItem("lastDataset") || "2025";
   return (
-    <TeamProvider>
-      <Routes>
-        <Route
-          path="/:datasetId"
-          element={
-            <PageProvider>
-              <SettingsProvider>
+    <SettingsProvider>
+      <TeamProvider>
+        <Routes>
+          <Route
+            path="/:datasetId"
+            element={
+              <PageProvider>
                 <MainApp />
-              </SettingsProvider>
-            </PageProvider>
-          }
-        />
-        <Route
-          path="/"
-          element={<Navigate to={`/${savedDataset}?p=0`} replace />}
-        />
-      </Routes>
-    </TeamProvider>
+              </PageProvider>
+            }
+          />
+          <Route
+            path="/"
+            element={<Navigate to={`/${savedDataset}?p=0`} replace />}
+          />
+        </Routes>
+      </TeamProvider>
+    </SettingsProvider>
   );
 }
 
