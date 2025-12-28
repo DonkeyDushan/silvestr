@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/silvestr/static/css/main.e6c13ad2.css",
-    "main.js": "/silvestr/static/js/main.3f4e1249.js",
+    "main.js": "/silvestr/static/js/main.e9a6c870.js",
     "index.html": "/silvestr/index.html",
     "main.e6c13ad2.css.map": "/silvestr/static/css/main.e6c13ad2.css.map",
-    "main.3f4e1249.js.map": "/silvestr/static/js/main.3f4e1249.js.map"
+    "main.e9a6c870.js.map": "/silvestr/static/js/main.e9a6c870.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.3f4e1249.js"
+    "static/js/main.e9a6c870.js"
   ]
 }
