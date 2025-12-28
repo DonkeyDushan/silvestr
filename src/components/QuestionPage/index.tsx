@@ -50,7 +50,10 @@ export const QuestionPage: React.FC = () => {
         {page.question?.answers.map((answer) => {
           const answerKey = `${datasetId}-${page?.round?.id}-${page.question?.id}-${answer.id}`;
           const assignedTeamId = assignedAnswers[answerKey];
-          const assignedTeam = teams.find((t) => t.id === assignedTeamId);
+          const assignedTeam =
+            assignedTeamId === "0"
+              ? null
+              : teams.find((t) => t.id === assignedTeamId);
           return (
             <Grid size={6} key={answer.id}>
               <Button
@@ -68,7 +71,9 @@ export const QuestionPage: React.FC = () => {
                   sx={{
                     color: "text.primary",
                     visibility:
-                      assignedTeam || showAllAnswers ? "visible" : "hidden",
+                      assignedTeam || showAllAnswers || assignedTeamId === "0"
+                        ? "visible"
+                        : "hidden",
                     fontWeight: 600,
                     fontSize: "1.5rem",
                   }}
@@ -85,7 +90,9 @@ export const QuestionPage: React.FC = () => {
                       : {},
                     {
                       visibility:
-                        assignedTeam || showScore ? "visible" : "hidden",
+                        assignedTeam || showScore || assignedTeamId === "0"
+                          ? "visible"
+                          : "hidden",
                     },
                   ]}
                 >
@@ -108,7 +115,9 @@ export const QuestionPage: React.FC = () => {
                         : {},
                       {
                         visibility:
-                          assignedTeam || showScore ? "visible" : "hidden",
+                          assignedTeam || showScore || assignedTeamId === "0"
+                            ? "visible"
+                            : "hidden",
                       },
                     ]}
                   >

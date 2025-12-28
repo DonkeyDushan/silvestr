@@ -23,7 +23,11 @@ export const TeamSelectMenu: React.FC<{
       if (playSound) {
         const audio = new Audio(
           `${process.env.PUBLIC_URL}/audio/${
-            teamId === null ? "error.mp3" : "correct.mp3"
+            teamId === null
+              ? "error.mp3"
+              : teamId === "0"
+              ? "click.mp3"
+              : "correct.mp3"
           }`
         );
         audio.play().catch((e) => console.error("Error playing audio:", e));
@@ -50,6 +54,9 @@ export const TeamSelectMenu: React.FC<{
     >
       <MenuItem onClick={() => handleAssignScore(null, true)}>
         <em>Nikdo</em>
+      </MenuItem>
+      <MenuItem onClick={() => handleAssignScore("0", true)}>
+        <em>Zobrazit odpověď</em>
       </MenuItem>
       <Divider />
       {teams.map((team) => (
