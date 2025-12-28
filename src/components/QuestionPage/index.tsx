@@ -23,11 +23,13 @@ export const QuestionPage: React.FC = () => {
 
   if (page.type === "intro") {
     return (
-      <Box textAlign="center">
+      <Box
+        textAlign="center"
+        sx={{ display: "grid", justifyContent: "center", alignItems: "center" }}
+      >
         <Typography variant="h2" gutterBottom>
-          {page?.round?.id ?? 1}. KOLO
+          {page?.round?.text}
         </Typography>
-        <Typography variant="h4">{page?.round?.text}</Typography>
       </Box>
     );
   }
