@@ -50,7 +50,12 @@ export const QuestionPage: React.FC = () => {
                 fullWidth
                 variant={"contained"}
                 onClick={(e) => handleAnswerClick(e, answer)}
-                sx={[questionStyles.answer]}
+                sx={[
+                  questionStyles.answer,
+                  assignedTeam
+                    ? { bgcolor: alpha(assignedTeam.color, 0.1) }
+                    : {},
+                ]}
               >
                 <Box
                   sx={{
@@ -71,10 +76,12 @@ export const QuestionPage: React.FC = () => {
                       : {},
                   ]}
                 >
-                  {answer.points *
-                    (pointsAsScore
-                      ? roundMultipliers[page?.round?.id || 1] || 1
-                      : 1)}
+                  <Typography variant="h6" fontWeight={600} minWidth={"4ch"}>
+                    {answer.points *
+                      (pointsAsScore
+                        ? roundMultipliers[page?.round?.id || 1] || 1
+                        : 1)}
+                  </Typography>
                 </Box>
                 {!pointsAsScore && (
                   <Box
@@ -88,9 +95,11 @@ export const QuestionPage: React.FC = () => {
                         : {},
                     ]}
                   >
-                    {answer.score *
-                      (roundMultipliers[page?.round?.id || 1] || 1)}{" "}
-                    bodů
+                    <Typography variant="h6" fontWeight={600} minWidth={"8ch"}>
+                      {answer.score *
+                        (roundMultipliers[page?.round?.id || 1] || 1)}
+                      {" bodů"}
+                    </Typography>
                   </Box>
                 )}
               </Button>

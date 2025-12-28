@@ -15,6 +15,9 @@ export function generatePages(dataset: Round[]): PageType[] {
       p.push({ type: "question", round, question: q, index: p.length });
     });
   });
-  p.push({ type: "final", index: p.length });
+  if (dataset.length > 1) {
+    p.push({ type: "final", index: p.length });
+  }
+
   return p;
 }
