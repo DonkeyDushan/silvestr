@@ -133,4 +133,59 @@ export const dataset2024: Dataset = [
       },
     ],
   },
+  {
+    id: 3,
+    text: "3. KOLO",
+    questions: [
+      {
+        id: 11,
+        question: "Jaký je nejhorší název pro mužské přirození?",
+        answers: [
+          { id: 1, text: "Čůrák", points: 20, score: 6 },
+          { id: 2, text: "Pindík", points: 12, score: 6 },
+          { id: 3, text: "Bimbas", points: 8, score: 4 },
+          { id: 4, text: "Pinďour", points: 8, score: 4 },
+          { id: 5, text: "Šulin", points: 7, score: 2 },
+          { id: 6, text: "Franta", points: 5, score: 1 },
+        ],
+      },
+      {
+        id: 12,
+        question:
+          "Co by si babičky nejvíce přály vidět pod vánočním stromečkem?",
+        answers: [
+          { id: 1, text: "Vnouče, vnoučata", points: 82, score: 6 },
+          { id: 2, text: "Fotky", points: 9, score: 5 },
+          { id: 3, text: "Ponožky", points: 8, score: 4 },
+          { id: 4, text: "Mládí", points: 7, score: 3 },
+          { id: 5, text: "Babiše", points: 3, score: 2 },
+          { id: 6, text: "Svíčku", points: 3, score: 2 },
+        ],
+      },
+      {
+        id: 13,
+        question: "Kdo je nejotravnějším českým hudebním interpretem?",
+        answers: [
+          { id: 1, text: "Marek Ztracený", points: 25, score: 6 },
+          { id: 2, text: "Michal David", points: 16, score: 5 },
+          { id: 3, text: "Mirai", points: 15, score: 4 },
+          { id: 4, text: "Kryštof", points: 13, score: 3 },
+          { id: 5, text: "Pokáč", points: 10, score: 2 },
+          { id: 6, text: "Richard Krajčo", points: 10, score: 2 },
+        ],
+      },
+      {
+        id: 14,
+        question: "Ale ne! Máma zase vaří…",
+        answers: [
+          { id: 1, text: "Koprovku", points: 26, score: 6 },
+          { id: 2, text: "Pervitin", points: 13, score: 5 },
+          { id: 3, text: "Rajskou", points: 7, score: 4 },
+          { id: 4, text: "Játra", points: 6, score: 3 },
+          { id: 5, text: "Žemlovku", points: 5, score: 2 },
+          { id: 6, text: "Lečo", points: 5, score: 2 },
+        ],
+      },
+    ],
+  },
 ];

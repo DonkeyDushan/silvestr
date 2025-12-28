@@ -62,10 +62,9 @@ export const TopBar: React.FC = () => {
             }
             sx={{
               color: "text.primary",
-              backgroundColor:
-                p.type === "intro"
-                  ? alpha(theme.palette.extraBackgrounds.darker, 0.5)
-                  : "transparent",
+              backgroundColor: ["final", "intro"].includes(p.type)
+                ? alpha(theme.palette.primary.main, 0.2)
+                : "transparent",
               "&.Mui-selected": {
                 backgroundColor: "extraBackgrounds.darker",
                 color: "text.primary",
