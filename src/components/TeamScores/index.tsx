@@ -6,7 +6,7 @@ import { scoreStyles } from "styles/scores";
 export const TeamScores: React.FC = () => {
   const { teams, scores } = useTeams();
   return (
-    <Box sx={{ spacing: 4, mt: 4, display: "flex", gap: 4 }}>
+    <Box sx={{ spacing: 4, mt: 4, display: "flex", flexWrap: "wrap", gap: 4 }}>
       {teams.map((team) => (
         <Box key={team.id} sx={scoreStyles.scoreBox}>
           <Box sx={[scoreStyles.teamName, { backgroundColor: team.color }]}>
@@ -14,7 +14,7 @@ export const TeamScores: React.FC = () => {
               {team.name}
             </Typography>
           </Box>
-          <Typography variant="h4" color={"text.primary"} sx={{ p: 2 }}>
+          <Typography variant="h4" color={"text.primary"} sx={{ py: 2, px: 4 }}>
             {scores[team.id] || 0}
           </Typography>
         </Box>
