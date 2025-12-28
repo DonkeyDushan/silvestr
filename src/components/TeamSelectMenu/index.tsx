@@ -1,6 +1,6 @@
 import { usePage, useTeams } from "context";
 import { Answer } from "data";
-import { Divider, Menu, MenuItem } from "@mui/material";
+import { Box, Divider, Menu, MenuItem } from "@mui/material";
 
 export const TeamSelectMenu: React.FC<{
   anchorEl: HTMLElement | null;
@@ -41,6 +41,15 @@ export const TeamSelectMenu: React.FC<{
       <Divider />
       {teams.map((team) => (
         <MenuItem key={team.id} onClick={() => handleAssignScore(team.id)}>
+          <Box
+            sx={{
+              width: 12,
+              height: 12,
+              borderRadius: "50%",
+              bgcolor: team.color,
+              mr: 1.5,
+            }}
+          />
           {team.name}
         </MenuItem>
       ))}

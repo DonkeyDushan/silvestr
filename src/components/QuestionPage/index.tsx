@@ -46,12 +46,23 @@ export const QuestionPage: React.FC = () => {
               <Button
                 fullWidth
                 variant={assignedTeam ? "contained" : "outlined"}
-                color={assignedTeam ? "success" : "primary"}
                 onClick={(e) => handleAnswerClick(e, answer)}
                 sx={{
                   justifyContent: "space-between",
                   py: 2,
                   fontSize: "1.2rem",
+                  bgcolor: assignedTeam ? assignedTeam.color : "transparent",
+                  color: assignedTeam ? "white" : "primary.main",
+                  borderColor: assignedTeam ? "transparent" : "primary.main",
+                  textShadow: assignedTeam
+                    ? "1px 1px 2px rgba(0,0,0,0.5)"
+                    : "none",
+                  "&:hover": {
+                    bgcolor: assignedTeam
+                      ? assignedTeam.color
+                      : "rgba(52, 72, 96, 0.08)",
+                    opacity: assignedTeam ? 0.9 : 1,
+                  },
                 }}
               >
                 <span>{answer.text}</span>

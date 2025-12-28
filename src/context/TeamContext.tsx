@@ -5,7 +5,8 @@ interface TeamContextType {
   teams: Team[];
   scores: Record<string, number>;
   assignedAnswers: Record<string, string>;
-  addTeam: (name: string) => void;
+  addTeam: (name: string, color: string) => void;
+  updateTeam: (id: string, name: string, color: string) => void;
   deleteTeam: (id: string) => void;
   assignScore: (
     datasetId: string,
@@ -30,12 +31,19 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({
     Record<string, string>
   >("assignedAnswers", {});
 
-  const addTeam = (name: string) => {
+  const addTeam = (name: string, color: string) => {
     const newTeam: Team = {
       id: Date.now().toString(),
       name: name,
+      color: color,
     };
     setTeams([...teams, newTeam]);
+  };
+
+  const updateTeam = (id: string, name: string, color: string) => {
+    setTeams(
+      teams.map((t) => (t.id === id ? { ...t, name: name, color: color } : t))
+    );
   };
 
   const deleteTeam = (id: string) => {
@@ -93,6 +101,7 @@ export const TeamProvider: React.FC<{ children: ReactNode }> = ({
         scores,
         assignedAnswers,
         addTeam,
+        updateTeam,
         deleteTeam,
         assignScore,
       }}
