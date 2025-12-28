@@ -10,7 +10,7 @@ export const wrapperStyles = {
     display: "grid",
     gridTemplateRows: "1fr auto",
     pb: 6,
-    width: "80vw",
+    width: { xs: "95vw", md: "80vw" },
     height: "100%",
     justifySelf: "center",
   },

@@ -1,7 +1,7 @@
 export const questionStyles = {
   points: {
     color: "text.primary",
-    px: 3,
+    px: { xs: 1.5, md: 3 },
     height: "100%",
     alignContent: "center",
     fontWeight: "bold",
@@ -12,15 +12,15 @@ export const questionStyles = {
     ml: "2px",
   },
   answer: {
-    fontSize: "1.2rem",
+    fontSize: { xs: "1rem", md: "1.2rem" },
     display: "grid",
     gridTemplateColumns: "1fr auto auto",
     alignContent: "center",
     justifyItems: "start",
     gridTemplateRows: "1fr",
     p: 0,
-    paddingLeft: 3,
-    minHeight: "5rem",
+    paddingLeft: { xs: 1.5, md: 3 },
+    minHeight: { xs: "3.5rem", md: "5rem" },
     borderRadius: 4,
     backgroundColor: "extraBackgrounds.darker",
     overflow: "hidden",

@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Box, Typography, Grid, Button, alpha } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Grid,
+  Button,
+  alpha,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useTeams, usePage, useSettings } from "context";
 import { Answer } from "data";
 import { TeamSelectMenu } from "components";
@@ -10,6 +18,8 @@ export const QuestionPage: React.FC = () => {
   const { currentPage: page, datasetId } = usePage();
   const { showAllAnswers, roundMultipliers, pointsAsScore, showScore } =
     useSettings();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [activeAnswer, setActiveAnswer] = useState<Answer | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -42,12 +52,21 @@ export const QuestionPage: React.FC = () => {
         gutterBottom
         textAlign="center"
         fontWeight={600}
-        mt={14}
-        mb={6}
+        sx={{
+          mt: { xs: 4, md: 14 },
+          mb: { xs: 3, md: 6 },
+          fontSize: { xs: "1.75rem", sm: "2.5rem", md: "3rem" },
+        }}
       >
         {page.question?.question}
       </Typography>
-      <Grid container spacing={4} alignContent={"center"} width={"100%"}>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 4 }}
+        mb={{ xs: 6, md: 0 }}
+        alignContent={"center"}
+        width={"100%"}
+      >
         {page.question?.answers.map((answer) => {
           const answerKey = `${datasetId}-${page?.round?.id}-${page.question?.id}-${answer.id}`;
           const assignedTeamId = assignedAnswers[answerKey];
@@ -56,7 +75,7 @@ export const QuestionPage: React.FC = () => {
               ? null
               : teams.find((t) => t.id === assignedTeamId);
           return (
-            <Grid size={6} key={answer.id}>
+            <Grid size={{ xs: 12, md: 6 }} key={answer.id}>
               <Button
                 fullWidth
                 variant={"contained"}
@@ -76,7 +95,9 @@ export const QuestionPage: React.FC = () => {
                         ? "visible"
                         : "hidden",
                     fontWeight: 600,
-                    fontSize: "1.5rem",
+                    fontSize: { xs: "1.1rem", md: "1.5rem" },
+                    textAlign: "left",
+                    flex: 1,
                   }}
                 >
                   {answer.text}
@@ -97,7 +118,12 @@ export const QuestionPage: React.FC = () => {
                     },
                   ]}
                 >
-                  <Typography variant="h6" fontWeight={600} minWidth={"4ch"}>
+                  <Typography
+                    variant="h6"
+                    fontWeight={600}
+                    minWidth={{ xs: "3ch", md: "4ch" }}
+                    sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}
+                  >
                     {answer.points *
                       (pointsAsScore
                         ? roundMultipliers[page?.round?.id || 1] || 1
@@ -122,10 +148,15 @@ export const QuestionPage: React.FC = () => {
                       },
                     ]}
                   >
-                    <Typography variant="h6" fontWeight={600} minWidth={"8ch"}>
+                    <Typography
+                      variant="h6"
+                      fontWeight={600}
+                      minWidth={{ xs: "6ch", md: "8ch" }}
+                      sx={{ fontSize: { xs: "0.9rem", md: "1.25rem" } }}
+                    >
                       {answer.score *
                         (roundMultipliers[page?.round?.id || 1] || 1)}
-                      {" bodů"}
+                      {isMobile ? " b." : " bodů"}
                     </Typography>
                   </Box>
                 )}

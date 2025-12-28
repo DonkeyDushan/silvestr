@@ -15,6 +15,7 @@ export const PageChevrons: React.FC = () => {
           left: 16,
           top: "50%",
           transform: "translateY(-50%)",
+          visibility: { xs: "hidden", md: "visible" },
         }}
       >
         <ChevronLeft fontSize="large" />
@@ -28,6 +29,7 @@ export const PageChevrons: React.FC = () => {
           right: 16,
           top: "50%",
           transform: "translateY(-50%)",
+          visibility: { xs: "hidden", md: "visible" },
         }}
       >
         <ChevronRight fontSize="large" />

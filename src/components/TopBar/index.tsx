@@ -19,7 +19,7 @@ export const TopBar: React.FC = () => {
   const { datasetId, pageIndex, pages, handlePageChange } = usePage();
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ mb: { xs: 4, md: 0 } }}>
       <Toolbar sx={{ backgroundColor: "extraBackgrounds.darker" }}>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           Silvestr {datasetId}

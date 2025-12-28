@@ -75,7 +75,7 @@ export const TeamManager = () => {
               sx={{
                 display: "grid",
                 gap: 1,
-                gridTemplateColumns: "1fr auto",
+                gridTemplateColumns: { xs: "1fr", md: "1fr auto" },
               }}
             >
               <TextField
@@ -127,7 +127,13 @@ export const TeamManager = () => {
                   </IconButton>
                 }
               >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
                   <Box sx={{ display: "flex", gap: 0.5 }}>
                     {teamColors.map((c) => (
                       <Box
@@ -144,6 +150,7 @@ export const TeamManager = () => {
                             team.color === c ? "white" : "transparent",
                           opacity: team.color === c ? 1 : 0.4,
                           "&:hover": { opacity: 1 },
+                          display: { xs: "none", md: "flex" },
                         }}
                       />
                     ))}

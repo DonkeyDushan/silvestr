@@ -19,7 +19,12 @@ export const FinalPage: React.FC = () => {
 
   return (
     <Box sx={scoreStyles.root}>
-      <Typography variant="h2" textAlign="center" gutterBottom>
+      <Typography
+        variant="h2"
+        textAlign="center"
+        gutterBottom
+        sx={{ fontSize: { xs: "2.5rem", md: "3.75rem" } }}
+      >
         Konečné pořadí
       </Typography>
       {sortedTeams.map((team, index) => (
@@ -43,6 +48,7 @@ export const FinalPage: React.FC = () => {
                 variant="h4"
                 color={"primary.contrastText"}
                 fontWeight={600}
+                sx={{ fontSize: { xs: "1.25rem", md: "2.125rem" } }}
               >
                 {team.name}
               </Typography>
@@ -51,7 +57,11 @@ export const FinalPage: React.FC = () => {
           <Typography
             variant="h4"
             color={"text.primary"}
-            sx={{ px: 4, fontWeight: "bold" }}
+            sx={{
+              px: { xs: 2, md: 4 },
+              fontWeight: "bold",
+              fontSize: { xs: "1.25rem", md: "2.125rem" },
+            }}
           >
             {scores[team.id] || 0}
           </Typography>
