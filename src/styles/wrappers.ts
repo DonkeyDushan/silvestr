@@ -9,7 +9,6 @@ export const wrapperStyles = {
   contentWrapper: {
     display: "grid",
     gridTemplateRows: "1fr auto",
-    pt: 12,
     pb: 6,
     width: "80vw",
     height: "100%",

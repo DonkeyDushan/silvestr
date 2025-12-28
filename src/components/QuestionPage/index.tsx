@@ -42,7 +42,8 @@ export const QuestionPage: React.FC = () => {
         gutterBottom
         textAlign="center"
         fontWeight={600}
-        mb={4}
+        mt={14}
+        mb={6}
       >
         {page.question?.question}
       </Typography>
