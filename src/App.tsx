@@ -1,17 +1,31 @@
 import { Box } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { TeamScores, TopBar, QuestionPage, PageChevrons } from "components";
-import { TeamProvider, PageProvider, SettingsProvider } from "context";
+import {
+  TeamScores,
+  TopBar,
+  QuestionPage,
+  PageChevrons,
+  FinalPage,
+} from "components";
+import { TeamProvider, PageProvider, SettingsProvider, usePage } from "context";
 import { wrapperStyles } from "./styles";
 
 function MainApp() {
+  const { currentPage } = usePage();
+
   return (
     <Box sx={wrapperStyles.appWrapper}>
       <TopBar />
       <Box sx={wrapperStyles.contentWrapper}>
         <PageChevrons />
-        <QuestionPage />
-        <TeamScores />
+        {currentPage.type === "final" ? (
+          <FinalPage />
+        ) : (
+          <>
+            <QuestionPage />
+            <TeamScores />
+          </>
+        )}
       </Box>
     </Box>
   );

@@ -25,9 +25,9 @@ export const QuestionPage: React.FC = () => {
     return (
       <Box textAlign="center">
         <Typography variant="h2" gutterBottom>
-          Round {page.round.id}
+          {page?.round?.id ?? 1}. KOLO
         </Typography>
-        <Typography variant="h4">{page.round.text}</Typography>
+        <Typography variant="h4">{page?.round?.text}</Typography>
       </Box>
     );
   }
@@ -39,7 +39,7 @@ export const QuestionPage: React.FC = () => {
       </Typography>
       <Grid container spacing={4} alignContent={"center"} width={"100%"}>
         {page.question?.answers.map((answer) => {
-          const answerKey = `${datasetId}-${page.round.id}-${page.question?.id}-${answer.id}`;
+          const answerKey = `${datasetId}-${page?.round?.id}-${page.question?.id}-${answer.id}`;
           const assignedTeamId = assignedAnswers[answerKey];
           const assignedTeam = teams.find((t) => t.id === assignedTeamId);
           return (
@@ -70,7 +70,9 @@ export const QuestionPage: React.FC = () => {
                   ]}
                 >
                   {answer.points *
-                    (pointsAsScore ? roundMultipliers[page.round.id] || 1 : 1)}
+                    (pointsAsScore
+                      ? roundMultipliers[page?.round?.id || 1] || 1
+                      : 1)}
                 </Box>
                 {!pointsAsScore && (
                   <Box
@@ -84,7 +86,9 @@ export const QuestionPage: React.FC = () => {
                         : {},
                     ]}
                   >
-                    {answer.score * (roundMultipliers[page.round.id] || 1)} bodů
+                    {answer.score *
+                      (roundMultipliers[page?.round?.id || 1] || 1)}{" "}
+                    bodů
                   </Box>
                 )}
               </Button>

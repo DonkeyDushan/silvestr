@@ -11,7 +11,10 @@ export const TeamSelectMenu: React.FC<{
   const { teams, assignScore } = useTeams();
   const { datasetId, currentPage } = usePage();
 
-  const handleAssignScore = (teamId: string | null, playSound: boolean = false) => {
+  const handleAssignScore = (
+    teamId: string | null,
+    playSound: boolean = false
+  ) => {
     if (
       activeAnswer &&
       currentPage.type === "question" &&
@@ -27,7 +30,7 @@ export const TeamSelectMenu: React.FC<{
       }
       assignScore(
         datasetId,
-        currentPage.round.id,
+        currentPage?.round?.id || 1,
         currentPage.question.id,
         activeAnswer,
         teamId
@@ -50,7 +53,10 @@ export const TeamSelectMenu: React.FC<{
       </MenuItem>
       <Divider />
       {teams.map((team) => (
-        <MenuItem key={team.id} onClick={() => handleAssignScore(team.id, true)}>
+        <MenuItem
+          key={team.id}
+          onClick={() => handleAssignScore(team.id, true)}
+        >
           <Box
             sx={{
               width: 12,

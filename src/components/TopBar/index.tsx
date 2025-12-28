@@ -53,7 +53,9 @@ export const TopBar: React.FC = () => {
         {pages.map((p, i) => (
           <Tab
             key={i}
-            label={p.type === "intro" ? `R${p.round.id}` : `Q${p.question?.id}`}
+            label={
+              p.type === "intro" ? `R${p?.round?.id}` : `Q${p.question?.id}`
+            }
             sx={{
               color: "text.primary",
               backgroundColor:
