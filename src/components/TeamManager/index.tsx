@@ -12,7 +12,6 @@ import {
   ListItemText,
   IconButton,
   useTheme,
-  Tooltip,
 } from "@mui/material";
 import { Add as AddIcon, Delete as DeleteIcon } from "@mui/icons-material";
 import { useTeams } from "context";
@@ -63,7 +62,13 @@ export const TeamManager: React.FC<TeamDialogProps> = ({ open, onClose }) => {
             mt: 1,
           }}
         >
-          <Box sx={{ display: "flex", gap: 1 }}>
+          <Box
+            sx={{
+              display: "grid",
+              gap: 1,
+              gridTemplateColumns: "1fr auto",
+            }}
+          >
             <TextField
               fullWidth
               label="Název týmu"

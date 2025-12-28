@@ -23,8 +23,8 @@ export const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#344860",
-      dark: "#2c3f50",
+      main: "#8684da",
+      dark: "#8482e3",
       contrastText: "#050c16",
     },
     background: {
@@ -59,6 +59,23 @@ export const theme = createTheme({
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     allVariants: {
       color: "#ebf1f1",
+    },
+  },
+  components: {
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          borderRadius: "16px",
+          padding: "24px 16px",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          padding: "12px 24px",
+        },
+      },
     },
   },
 });
