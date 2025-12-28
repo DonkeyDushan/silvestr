@@ -100,7 +100,7 @@ export const Settings = () => {
 
             <Box>
               <Typography variant="h6" gutterBottom>
-                Násobení bodů pro kola
+                Vážení bodů pro kola
               </Typography>
               <Stack spacing={2}>
                 {dataset.map((round: any) => (
@@ -116,7 +116,7 @@ export const Settings = () => {
                     <TextField
                       type="number"
                       size="small"
-                      label="Násobitel"
+                      label="Činitel"
                       value={roundMultipliers[round.id] || 1}
                       onChange={(e) =>
                         setRoundMultiplier(round.id, Number(e.target.value))
