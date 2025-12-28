@@ -21,15 +21,14 @@ export const TeamSelectMenu: React.FC<{
       currentPage.question
     ) {
       if (playSound) {
-        const audio = new Audio(
-          `${process.env.PUBLIC_URL}/audio/${
-            teamId === null
-              ? "error.mp3"
-              : teamId === "0"
-              ? "click.mp3"
-              : "correct.mp3"
-          }`
-        );
+        const audioPath = `audio/${
+          teamId === null
+            ? "error.mp3"
+            : teamId === "0"
+            ? "click.mp3"
+            : "correct.mp3"
+        }`;
+        const audio = new Audio(audioPath);
         audio.play().catch((e) => console.error("Error playing audio:", e));
       }
       assignScore(

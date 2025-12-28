@@ -7,9 +7,7 @@ export const FinalPage: React.FC = () => {
   const { teams, scores } = useTeams();
 
   useEffect(() => {
-    const audio = new Audio(
-      `${process.env.PUBLIC_URL}/audio/victory-chime.mp3`
-    );
+    const audio = new Audio("audio/victory-chime.mp3");
     audio.play().catch((e) => console.error("Error playing audio:", e));
   }, []);
 
