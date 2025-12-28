@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { TeamScores, TopBar, QuestionPage, PageChevrons } from "components";
-import { TeamProvider, PageProvider } from "context";
+import { TeamProvider, PageProvider, SettingsProvider } from "context";
 import { wrapperStyles } from "./styles";
 
 function MainApp() {
@@ -26,7 +26,9 @@ function App() {
           path="/:datasetId"
           element={
             <PageProvider>
-              <MainApp />
+              <SettingsProvider>
+                <MainApp />
+              </SettingsProvider>
             </PageProvider>
           }
         />

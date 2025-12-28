@@ -7,11 +7,32 @@ import {
   Box,
   Button,
   IconButton,
+  FormControlLabel,
+  Switch,
+  Typography,
+  Divider,
+  TextField,
+  Stack,
 } from "@mui/material";
 import { Settings as SettingsIcon } from "@mui/icons-material";
+import { useSettings, useTeams, usePage } from "context";
 
 export const Settings = () => {
   const [isSettingsDialogOpen, setIsSettingsDialogOpen] = React.useState(false);
+  const {
+    showAllAnswers,
+    setShowAllAnswers,
+    roundMultipliers,
+    setRoundMultiplier,
+  } = useSettings();
+  const { resetScores } = useTeams();
+  const { dataset } = usePage();
+
+  const handleReset = () => {
+    if (window.confirm("Opravdu chcete resetovat všechny body?")) {
+      resetScores();
+    }
+  };
 
   return (
     <Box>
@@ -25,7 +46,68 @@ export const Settings = () => {
         maxWidth="sm"
       >
         <DialogTitle>Nastavení</DialogTitle>
-        <DialogContent></DialogContent>
+        <DialogContent>
+          <Stack spacing={3} sx={{ mt: 1 }}>
+            <Box>
+              <Typography variant="h6" gutterBottom>
+                Obecné
+              </Typography>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={showAllAnswers}
+                    onChange={(e) => setShowAllAnswers(e.target.checked)}
+                  />
+                }
+                label="Zviditelnit všechny odpovědi"
+              />
+            </Box>
+
+            <Divider />
+
+            <Box>
+              <Typography variant="h6" gutterBottom>
+                Body
+              </Typography>
+              <Button variant="contained" color="error" onClick={handleReset}>
+                Resetovat body
+              </Button>
+            </Box>
+
+            <Divider />
+
+            <Box>
+              <Typography variant="h6" gutterBottom>
+                Násobení bodů pro kola
+              </Typography>
+              <Stack spacing={2}>
+                {dataset.map((round: any) => (
+                  <Box
+                    key={round.id}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Typography>{round.text}</Typography>
+                    <TextField
+                      type="number"
+                      size="small"
+                      label="Násobitel"
+                      value={roundMultipliers[round.id] || 1}
+                      onChange={(e) =>
+                        setRoundMultiplier(round.id, Number(e.target.value))
+                      }
+                      sx={{ width: 100 }}
+                      inputProps={{ min: 1, step: 0.5 }}
+                    />
+                  </Box>
+                ))}
+              </Stack>
+            </Box>
+          </Stack>
+        </DialogContent>
         <DialogActions>
           <Button onClick={() => setIsSettingsDialogOpen(false)}>Zavřít</Button>
         </DialogActions>

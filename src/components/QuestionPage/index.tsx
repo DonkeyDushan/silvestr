@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Box, Typography, Grid, Button, Paper, alpha } from "@mui/material";
-import { useTeams, usePage } from "context";
+import { Box, Typography, Grid, Button, alpha } from "@mui/material";
+import { useTeams, usePage, useSettings } from "context";
 import { Answer } from "data";
 import { TeamSelectMenu } from "components";
 import { wrapperStyles, questionStyles } from "styles";
@@ -8,6 +8,7 @@ import { wrapperStyles, questionStyles } from "styles";
 export const QuestionPage: React.FC = () => {
   const { teams, assignedAnswers } = useTeams();
   const { currentPage: page, datasetId } = usePage();
+  const { showAllAnswers, roundMultipliers } = useSettings();
 
   const [activeAnswer, setActiveAnswer] = useState<Answer | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -52,7 +53,8 @@ export const QuestionPage: React.FC = () => {
                 <Box
                   sx={{
                     color: "text.primary",
-                    visibility: assignedTeam ? "visible" : "hidden",
+                    visibility:
+                      assignedTeam || showAllAnswers ? "visible" : "hidden",
                   }}
                 >
                   {answer.text}
@@ -80,7 +82,7 @@ export const QuestionPage: React.FC = () => {
                       : {},
                   ]}
                 >
-                  {answer.score} bodů
+                  {answer.score * (roundMultipliers[page.round.id] || 1)} bodů
                 </Box>
               </Button>
             </Grid>

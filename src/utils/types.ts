@@ -12,7 +12,7 @@ export interface TeamScore {
 export interface AppState {
   teams: Team[];
   scores: Record<string, number>; // teamId -> score
-  assignedAnswers: Record<string, string>; // answerId (as string) -> teamId
+  assignedAnswers: Record<string, { teamId: string; score: number }>; // answerKey -> { teamId, score }
 }
 
 export interface Answer {
