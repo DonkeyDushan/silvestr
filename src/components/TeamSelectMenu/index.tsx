@@ -11,12 +11,20 @@ export const TeamSelectMenu: React.FC<{
   const { teams, assignScore } = useTeams();
   const { datasetId, currentPage } = usePage();
 
-  const handleAssignScore = (teamId: string | null) => {
+  const handleAssignScore = (teamId: string | null, playSound: boolean = false) => {
     if (
       activeAnswer &&
       currentPage.type === "question" &&
       currentPage.question
     ) {
+      if (playSound) {
+        const audio = new Audio(
+          `${process.env.PUBLIC_URL}/audio/${
+            teamId === null ? "error.mp3" : "correct.mp3"
+          }`
+        );
+        audio.play().catch((e) => console.error("Error playing audio:", e));
+      }
       assignScore(
         datasetId,
         currentPage.round.id,
@@ -37,12 +45,12 @@ export const TeamSelectMenu: React.FC<{
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       transformOrigin={{ vertical: "top", horizontal: "right" }}
     >
-      <MenuItem onClick={() => handleAssignScore(null)}>
+      <MenuItem onClick={() => handleAssignScore(null, true)}>
         <em>Nikdo</em>
       </MenuItem>
       <Divider />
       {teams.map((team) => (
-        <MenuItem key={team.id} onClick={() => handleAssignScore(team.id)}>
+        <MenuItem key={team.id} onClick={() => handleAssignScore(team.id, true)}>
           <Box
             sx={{
               width: 12,
