@@ -27,7 +27,7 @@ export const QuestionPage: React.FC = () => {
         textAlign="center"
         sx={{ display: "grid", justifyContent: "center", alignItems: "center" }}
       >
-        <Typography variant="h2" gutterBottom>
+        <Typography variant="h2" fontWeight={600}>
           {page?.round?.text}
         </Typography>
       </Box>
@@ -36,7 +36,13 @@ export const QuestionPage: React.FC = () => {
 
   return (
     <Box sx={wrapperStyles.questionWrapper}>
-      <Typography variant="h4" gutterBottom textAlign="center" mb={6}>
+      <Typography
+        variant="h3"
+        gutterBottom
+        textAlign="center"
+        fontWeight={600}
+        mb={4}
+      >
         {page.question?.question}
       </Typography>
       <Grid container spacing={4} alignContent={"center"} width={"100%"}>
@@ -62,6 +68,8 @@ export const QuestionPage: React.FC = () => {
                     color: "text.primary",
                     visibility:
                       assignedTeam || showAllAnswers ? "visible" : "hidden",
+                    fontWeight: 600,
+                    fontSize: "1.5rem",
                   }}
                 >
                   {answer.text}
