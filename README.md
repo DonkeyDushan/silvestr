@@ -18,18 +18,20 @@ Visit the live application at: [https://donkeydushan.github.io/silvestr](https:/
 
 ### Prerequisites
 
-- Node.js 16+ 
+- Node.js 16+
 - npm
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/DonkeyDushan/silvestr.git
 cd silvestr
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
@@ -90,4 +92,4 @@ The application is automatically deployed to GitHub Pages when changes are pushe
 
 ## License
 
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+see the [LICENSE](LICENSE) file for details.
