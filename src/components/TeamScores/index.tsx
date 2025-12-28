@@ -1,13 +1,9 @@
 import React from "react";
 import { Box, Typography, Grid, Paper } from "@mui/material";
-import { Team } from "../../types";
+import { useTeams } from "../../context/TeamContext";
 
-interface TeamScoresProps {
-  teams: Team[];
-  scores: Record<string, number>;
-}
-
-export const TeamScores: React.FC<TeamScoresProps> = ({ teams, scores }) => {
+export const TeamScores: React.FC = () => {
+  const { teams, scores } = useTeams();
   return (
     <Box sx={{ mt: 4 }}>
       <Typography variant="h5" gutterBottom>

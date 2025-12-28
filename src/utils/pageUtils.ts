@@ -1,4 +1,4 @@
-import { Round, Question } from "../types";
+import { Round, Question } from "./types";
 
 export type PageType = {
   type: "intro" | "question";

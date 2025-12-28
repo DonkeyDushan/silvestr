@@ -12,22 +12,13 @@ import {
 import { Settings as SettingsIcon } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { TeamManager } from "../TeamManager";
+import { usePage } from "../../context";
 
-export const TopBar: React.FC<{
-  datasetId: string;
-  onDatasetChange: (id: string) => void;
-  pageIndex: number;
-  pages: any[];
-  onPageChange: (index: number) => void;
-}> = ({ datasetId, onDatasetChange, pageIndex, pages, onPageChange }) => {
+export const TopBar: React.FC = () => {
   const navigate = useNavigate();
+  const { datasetId, pageIndex, pages, handlePageChange } = usePage();
 
   const [isTeamDialogOpen, setIsTeamDialogOpen] = useState(false);
-
-  const handlePageChange = (newIndex: number) => {
-    onPageChange(newIndex);
-    navigate(`/${datasetId}?p=${newIndex}`);
-  };
 
   return (
     <AppBar position="static">

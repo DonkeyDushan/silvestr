@@ -13,28 +13,20 @@ import {
   IconButton,
 } from "@mui/material";
 import { Add as AddIcon, Delete as DeleteIcon } from "@mui/icons-material";
-import { Team } from "../../types";
+import { useTeams } from "../../context/TeamContext";
 
 interface TeamDialogProps {
   open: boolean;
   onClose: () => void;
-  teams: Team[];
-  onAddTeam: (name: string) => void;
-  onDeleteTeam: (id: string) => void;
 }
 
-export const TeamManager: React.FC<TeamDialogProps> = ({
-  open,
-  onClose,
-  teams,
-  onAddTeam,
-  onDeleteTeam,
-}) => {
+export const TeamManager: React.FC<TeamDialogProps> = ({ open, onClose }) => {
+  const { teams, addTeam, deleteTeam } = useTeams();
   const [newTeamName, setNewTeamName] = React.useState("");
 
   const handleAdd = () => {
     if (newTeamName.trim()) {
-      onAddTeam(newTeamName.trim());
+      addTeam(newTeamName.trim());
       setNewTeamName("");
     }
   };
@@ -64,7 +56,7 @@ export const TeamManager: React.FC<TeamDialogProps> = ({
             <ListItem key={team.id}>
               <ListItemText primary={team.name} />
 
-              <IconButton edge="end" onClick={() => onDeleteTeam(team.id)}>
+              <IconButton edge="end" onClick={() => deleteTeam(team.id)}>
                 <DeleteIcon />
               </IconButton>
             </ListItem>
