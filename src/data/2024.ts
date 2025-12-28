@@ -7,7 +7,15 @@ export const dataset2024: Dataset = [
     questions: [
       {
         id: 1,
-        question: "",
+        question: "Lorem ipsum dolor sit amet?",
+        answers: [
+          { id: 1, text: "This is random text", points: 32, score: 6 },
+          { id: 2, text: "Another answer", points: 20, score: 5 },
+        ],
+      },
+      {
+        id: 1,
+        question: "Lorem ipsum dolor sit amet?",
         answers: [{ id: 1, text: "", points: 1, score: 1 }],
       },
     ],
