@@ -4,12 +4,12 @@ export const questionStyles = {
     px: 3,
     height: "100%",
     alignContent: "center",
-    borderLeft: "2px solid",
-    borderColor: "text.primary",
     fontWeight: "bold",
+    backgroundColor: "background.paper",
   },
   score: {
     borderRadius: "0 2 2 0",
+    ml: "2px",
   },
   answer: {
     fontSize: "1.2rem",
@@ -22,9 +22,7 @@ export const questionStyles = {
     paddingLeft: 3,
     minHeight: "5rem",
     borderRadius: 4,
+    backgroundColor: "extraBackgrounds.darker",
     overflow: "hidden",
-    border: "2px solid",
-    borderColor: "text.primary",
-    backgroundColor: "background.paper",
   },
 };

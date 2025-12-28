@@ -24,7 +24,7 @@ export const TopBar: React.FC = () => {
 
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar sx={{ backgroundColor: "extraBackgrounds.darker" }}>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           Silvestr {datasetId}
         </Typography>
@@ -50,7 +50,7 @@ export const TopBar: React.FC = () => {
         variant="scrollable"
         scrollButtons="auto"
         sx={{
-          bgcolor: "primary.dark",
+          bgcolor: "background.paper",
           p: 0,
           ".MuiTabs-indicator": { display: "none" },
         }}
@@ -63,10 +63,10 @@ export const TopBar: React.FC = () => {
               color: "text.primary",
               backgroundColor:
                 p.type === "intro"
-                  ? alpha(theme.palette.background.default, 0.5)
+                  ? alpha(theme.palette.extraBackgrounds.darker, 0.5)
                   : "transparent",
               "&.Mui-selected": {
-                backgroundColor: "background.default",
+                backgroundColor: "extraBackgrounds.darker",
                 color: "text.primary",
               },
             }}

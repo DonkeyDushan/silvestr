@@ -28,8 +28,8 @@ export const theme = createTheme({
       contrastText: "#050c16",
     },
     background: {
-      default: "#050c16",
-      paper: "#0b1419",
+      default: "#262335",
+      paper: "#241b2f",
     },
     text: {
       primary: "#ebf1f1",
@@ -37,8 +37,8 @@ export const theme = createTheme({
       disabled: "#96a6a6",
     },
     extraBackgrounds: {
-      darker: "#050c16",
-      lighter: "#344853",
+      darker: "#171520",
+      lighter: "#352d3f",
       blueish: "#22374c",
     },
     teamColors: [
@@ -53,6 +53,7 @@ export const theme = createTheme({
       "#2f8290",
       "#79c9d0",
     ],
+    divider: "#171520",
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',

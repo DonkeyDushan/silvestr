@@ -45,7 +45,7 @@ export const QuestionPage: React.FC = () => {
             <Grid size={6} key={answer.id}>
               <Button
                 fullWidth
-                variant={assignedTeam ? "contained" : "outlined"}
+                variant={"contained"}
                 onClick={(e) => handleAnswerClick(e, answer)}
                 sx={[questionStyles.answer]}
               >
@@ -60,11 +60,11 @@ export const QuestionPage: React.FC = () => {
                 <Box
                   sx={[
                     questionStyles.points,
-                    {
-                      bgcolor: assignedTeam
-                        ? alpha(assignedTeam.color, 0.5)
-                        : "transparent",
-                    },
+                    assignedTeam
+                      ? {
+                          bgcolor: alpha(assignedTeam.color, 0.5),
+                        }
+                      : {},
                   ]}
                 >
                   {answer.points}
@@ -73,11 +73,11 @@ export const QuestionPage: React.FC = () => {
                   sx={[
                     questionStyles.points,
                     questionStyles.score,
-                    {
-                      bgcolor: assignedTeam
-                        ? alpha(assignedTeam.color, 0.5)
-                        : "transparent",
-                    },
+                    assignedTeam
+                      ? {
+                          bgcolor: alpha(assignedTeam.color, 0.5),
+                        }
+                      : {},
                   ]}
                 >
                   {answer.score} bodů
