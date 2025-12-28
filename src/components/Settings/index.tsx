@@ -76,6 +76,8 @@ export const Settings = () => {
 
             <Divider />
 
+            <Box>{JSON.stringify(roundMultipliers)}</Box>
+
             <Box>
               <Typography variant="h6" gutterBottom>
                 Násobení bodů pro kola

@@ -12,7 +12,7 @@ export const TeamSelectMenu: React.FC<{
   const { datasetId, currentPage } = usePage();
   const { roundMultipliers } = useSettings();
 
-  const multiplier = roundMultipliers[currentPage.question?.id || 0] || 1;
+  const multiplier = roundMultipliers[currentPage.round.id] || 1;
 
   const handleAssignScore = (teamId: string | null) => {
     if (
