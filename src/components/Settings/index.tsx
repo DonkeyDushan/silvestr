@@ -65,7 +65,7 @@ export const Settings = () => {
                     onChange={(e) => setShowAllAnswers(e.target.checked)}
                   />
                 }
-                label="Zviditelnit všechny odpovědi"
+                label="Zviditelnit všechny odpovědi (pro moderátora)"
               />
               <FormControlLabel
                 control={
