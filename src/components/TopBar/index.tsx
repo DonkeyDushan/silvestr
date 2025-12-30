@@ -48,10 +48,7 @@ export const TopBar: React.FC = () => {
         sx={{
           bgcolor: "background.paper",
           p: 0,
-          ".MuiTabs-list": {
-            flexWrap: "wrap",
-          },
-          ".MuiTabs-indicator": { display: "none" },
+          maxWidth: "100vw",
         }}
         allowScrollButtonsMobile={true}
       >
