@@ -88,17 +88,15 @@ export const QuestionPage: React.FC = () => {
                 ]}
               >
                 <Box
-                  sx={{
-                    color: "text.primary",
-                    visibility:
-                      assignedTeam || showAllAnswers || assignedTeamId === "0"
-                        ? "visible"
-                        : "hidden",
-                    fontWeight: 600,
-                    fontSize: { xs: "1.1rem", md: "1.5rem" },
-                    textAlign: "left",
-                    flex: 1,
-                  }}
+                  sx={[
+                    questionStyles.answerText,
+                    {
+                      visibility:
+                        assignedTeam || showAllAnswers || assignedTeamId === "0"
+                          ? "visible"
+                          : "hidden",
+                    },
+                  ]}
                 >
                   {answer.text}
                 </Box>
@@ -151,12 +149,12 @@ export const QuestionPage: React.FC = () => {
                     <Typography
                       variant="h6"
                       fontWeight={600}
-                      minWidth={{ xs: "6ch", md: "8ch" }}
+                      minWidth={"6ch"}
                       sx={{ fontSize: { xs: "0.9rem", md: "1.25rem" } }}
                     >
                       {answer.score *
                         (roundMultipliers[page?.round?.id || 1] || 1)}
-                      {isMobile ? " b." : " bodů"}
+                      {" b."}
                     </Typography>
                   </Box>
                 )}
