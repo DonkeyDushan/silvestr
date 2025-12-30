@@ -2,8 +2,6 @@ export * from "./TeamScores";
 export * from "./TopBar";
 export * from "./TeamSelectMenu";
 export * from "./TeamManager";
-export * from "./QuestionPage";
 export * from "./PageChevrons";
 export * from "./Settings";
-export * from "./FinalPage";
 export * from "./Results";
