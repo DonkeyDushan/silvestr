@@ -5,8 +5,7 @@ export const scoreStyles = {
     gap: 2,
     width: "100%",
     maxWidth: "800px",
-    margin: "0 auto",
-    mt: 4,
+    margin: "auto",
   },
   scoreBox: {
     borderRadius: 4,

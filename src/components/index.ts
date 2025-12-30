@@ -6,3 +6,4 @@ export * from "./QuestionPage";
 export * from "./PageChevrons";
 export * from "./Settings";
 export * from "./FinalPage";
+export * from "./Results";
