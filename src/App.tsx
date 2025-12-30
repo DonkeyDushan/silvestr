@@ -2,11 +2,18 @@ import { Box } from "@mui/material";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { TeamScores, TopBar, PageChevrons } from "components";
 import { FinalPage, QuestionPage, RoundPage } from "pages";
-import { TeamProvider, PageProvider, SettingsProvider, usePage } from "context";
+import {
+  TeamProvider,
+  PageProvider,
+  SettingsProvider,
+  usePage,
+  useSettings,
+} from "context";
 import { wrapperStyles } from "./styles";
 
 function MainApp() {
   const { currentPage } = usePage();
+  const { showTeamScore } = useSettings();
 
   return (
     <Box sx={wrapperStyles.appWrapper}>
@@ -17,7 +24,7 @@ function MainApp() {
         {currentPage.type === "intro" && <RoundPage />}
         {currentPage.type === "question" && (
           <>
-            <QuestionPage /> <TeamScores />
+            <QuestionPage /> {showTeamScore && <TeamScores />}
           </>
         )}
       </Box>

@@ -10,6 +10,8 @@ interface SettingsContextType {
   setPointsAsScore: (use: boolean) => void;
   showScore: boolean;
   setShowScore: (show: boolean) => void;
+  showTeamScore: boolean;
+  setShowTeamScore: (show: boolean) => void;
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(
@@ -26,6 +28,10 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
   const [pointsAsScore, setPointsAsScore] = useLocalStorage<boolean>(
     "usePointsAsScore",
     false
+  );
+  const [showTeamScore, setShowTeamScore] = useLocalStorage<boolean>(
+    "showTeamScore",
+    true
   );
   const [roundMultipliers, setRoundMultipliers] = useLocalStorage<
     Record<number, number>
@@ -50,6 +56,8 @@ export const SettingsProvider: React.FC<{ children: ReactNode }> = ({
         setPointsAsScore,
         showScore,
         setShowScore,
+        showTeamScore,
+        setShowTeamScore,
       }}
     >
       {children}

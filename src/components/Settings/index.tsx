@@ -28,6 +28,8 @@ export const Settings = () => {
     setPointsAsScore,
     showScore,
     setShowScore,
+    showTeamScore,
+    setShowTeamScore,
   } = useSettings();
   const { resetScores } = useTeams();
   const { dataset } = usePage();
@@ -82,6 +84,15 @@ export const Settings = () => {
                   />
                 }
                 label="Zobrazit skóre u odpovědí"
+              />
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={showTeamScore}
+                    onChange={(e) => setShowTeamScore(e.target.checked)}
+                  />
+                }
+                label="Zobrazit průběžné skóre týmů"
               />
             </Box>
 
