@@ -63,6 +63,7 @@ export const TopBar: React.FC = () => {
                 : `${p.question?.id}`
             }
             sx={{
+              minWidth: "69px",
               color: "text.primary",
               backgroundColor: ["final", "intro"].includes(p.type)
                 ? alpha(theme.palette.primary.main, 0.2)
